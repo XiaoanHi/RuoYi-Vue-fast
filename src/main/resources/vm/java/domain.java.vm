@@ -79,7 +79,6 @@ public class ${ClassName} extends ${Entity} implements Serializable
 
 #end
 
-
 #if($table.sub)
     public List<${subClassName}> get${subClassName}List()
     {
