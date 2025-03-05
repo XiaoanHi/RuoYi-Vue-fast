@@ -5,8 +5,18 @@ import ${import};
 #end
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.ruoyi.framework.aspectj.lang.annotation.Excel;
-import com.ruoyi.framework.web.domain.BaseEntity;
+import com.shuziyile.framework.aspectj.lang.annotation.Excel;
+import com.shuziyile.framework.web.domain.BaseEntity;
+
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * ${subTable.functionName}对象 ${subTableName}
@@ -14,7 +24,13 @@ import com.ruoyi.framework.web.domain.BaseEntity;
  * @author ${author}
  * @date ${datetime}
  */
-public class ${subClassName} extends BaseEntity
+@Data
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@Accessors(chain = true)
+@TableName("${subTableName}")
+public class ${subClassName} extends BaseEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
@@ -36,6 +52,13 @@ public class ${subClassName} extends BaseEntity
 #else
     @Excel(name = "${comment}")
 #end
+#end
+#if($column.javaField=='version')
+    @Version
+#elseif($column.javaField=='del_flag')
+    @TableLogic
+#elseif($column.isPk==1)
+    @TableId(value = "$column.columnName")
 #end
     private $column.javaType $column.javaField;
 
@@ -60,17 +83,4 @@ public class ${subClassName} extends BaseEntity
 #end
 #end
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-#foreach ($column in $subTable.columns)
-#if($column.javaField.length() > 2 && $column.javaField.substring(1,2).matches("[A-Z]"))
-#set($AttrName=$column.javaField)
-#else
-#set($AttrName=$column.javaField.substring(0,1).toUpperCase() + ${column.javaField.substring(1)})
-#end
-            .append("${column.javaField}", get${AttrName}())
-#end
-            .toString();
-    }
 }
