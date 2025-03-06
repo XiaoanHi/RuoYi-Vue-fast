@@ -21,6 +21,7 @@ public class BaseEntity implements Serializable
     private static final long serialVersionUID = 1L;
 
     /** 搜索值 */
+    @TableField(exist = false)
     @JsonIgnore
     private String searchValue;
 
@@ -44,6 +45,7 @@ public class BaseEntity implements Serializable
     private String remark;
 
     /** 请求参数 */
+    @TableField(exist = false)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Map<String, Object> params;
 

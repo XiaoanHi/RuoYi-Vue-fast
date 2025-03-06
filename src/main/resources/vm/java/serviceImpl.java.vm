@@ -1,5 +1,6 @@
 package ${packageName}.service.impl;
 
+import java.util.Arrays;
 import java.util.List;
 #foreach ($column in $columns)
 #if($column.javaField == 'createTime' || $column.javaField == 'updateTime')
@@ -19,6 +20,8 @@ import ${packageName}.mapper.${subClassName}Mapper;
 import ${packageName}.mapper.${ClassName}Mapper;
 import ${packageName}.domain.${ClassName};
 import ${packageName}.service.I${ClassName}Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
 /**
  * ${functionName}Service业务层处理
@@ -53,7 +56,7 @@ public class ${ClassName}ServiceImpl extends ServiceImpl<${ClassName}Mapper, ${C
     @Override
     public List<${ClassName}> select${ClassName}List(${ClassName} ${className})
     {
-        return ${className}Mapper.select${ClassName}List(${className});
+        return ${className}Mapper.selectList(new QueryWrapper<>(${className}));
     }
 
     /**
@@ -78,7 +81,7 @@ public class ${ClassName}ServiceImpl extends ServiceImpl<${ClassName}Mapper, ${C
         insert${subClassName}(${className});
         return rows;
 #else
-        return ${className}Mapper.insert${ClassName}(${className});
+        return ${className}Mapper.insert(${className});
 #end
     }
 
@@ -121,7 +124,7 @@ public class ${ClassName}ServiceImpl extends ServiceImpl<${ClassName}Mapper, ${C
 #if($table.sub)
         ${className}Mapper.delete${subClassName}By${subTableFkClassName}s(${pkColumn.javaField}s);
 #end
-        return ${className}Mapper.deleteByIds(${pkColumn.javaField}s);
+        return ${className}Mapper.deleteBatchIds(Arrays.asList(${pkColumn.javaField}s));
     }
 
     /**
