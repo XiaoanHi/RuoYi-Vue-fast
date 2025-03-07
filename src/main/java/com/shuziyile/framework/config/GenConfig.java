@@ -27,6 +27,17 @@ public class GenConfig
     /** 是否允许生成文件覆盖到本地（自定义路径） */
     public static boolean allowOverwrite;
 
+    /** 前端类型（element-ui模版 element-plus模版） */
+    public static String tplWebType;
+
+    public static String getTplWebType() {
+        return tplWebType;
+    }
+
+    public void setTplWebType(String tplWebType) {
+        GenConfig.tplWebType = tplWebType;
+    }
+
     public static String getAuthor()
     {
         return author;

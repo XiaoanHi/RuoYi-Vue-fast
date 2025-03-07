@@ -27,6 +27,7 @@ public class GenUtils
         genTable.setFunctionName(replaceText(genTable.getTableComment()));
         genTable.setFunctionAuthor(GenConfig.getAuthor());
         genTable.setCreateBy(operName);
+        genTable.setTplWebType(GenConfig.getTplWebType());
     }
 
     /**
