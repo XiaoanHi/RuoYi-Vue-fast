@@ -224,6 +224,10 @@ public class VelocityUtils
         {
             fileName = StringUtils.format("{}/views/{}/{}/index.vue", vuePath, moduleName, businessName);
         }
+        if (template.contains("sub-mapper.java.vm") && StringUtils.equals(GenConstants.TPL_SUB, genTable.getTplCategory()))
+        {
+            fileName = StringUtils.format("{}/mapper/{}Mapper.java", javaPath, genTable.getSubTable().getClassName());
+        }
         return fileName;
     }
 

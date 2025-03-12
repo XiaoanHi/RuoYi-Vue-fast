@@ -6,6 +6,8 @@ import ${packageName}.domain.${ClassName};
 import ${packageName}.domain.${subClassName};
 #end
 
+import java.util.List;
+
 /**
  * ${functionName}Mapper接口
  * 
