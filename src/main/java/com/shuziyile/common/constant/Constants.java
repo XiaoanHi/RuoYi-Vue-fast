@@ -170,4 +170,13 @@ public class Constants
      */
     public static final String[] JOB_ERROR_STR = { "java.net.URL", "javax.naming.InitialContext", "org.yaml.snakeyaml",
             "org.springframework", "org.apache", "com.shuziyile.common.utils.file", "com.shuziyile.framework.config", "com.shuziyile.project.tool" };
+
+    /**
+     * APP登录用户缓存前缀
+     */
+    public static final String APP_LOGIN_USER_KEY = "app_login_user_key";
+    /**
+     * APP令牌前缀
+     */
+    public static final String APP_TOKEN_PREFIX = "App ";
 }
