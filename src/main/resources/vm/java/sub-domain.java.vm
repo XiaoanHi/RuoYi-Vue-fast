@@ -30,7 +30,7 @@ import java.util.Map;
 @NoArgsConstructor
 @Accessors(chain = true)
 @TableName("${subTableName}")
-public class ${subClassName} extends BaseEntity implements Serializable
+public class ${subClassName}  implements Serializable
 {
     private static final long serialVersionUID = 1L;
 

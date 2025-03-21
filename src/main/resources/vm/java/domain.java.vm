@@ -71,20 +71,8 @@ public class ${ClassName} extends ${Entity} implements Serializable
 #end
 #if($table.sub)
     /** $table.subTable.functionName信息 */
+    @TableField(exist = false)
     private List<${subClassName}> ${subclassName}List;
-
-#end
-
-#if($table.sub)
-    public List<${subClassName}> get${subClassName}List()
-    {
-        return ${subclassName}List;
-    }
-
-    public void set${subClassName}List(List<${subClassName}> ${subclassName}List)
-    {
-        this.${subclassName}List = ${subclassName}List;
-    }
 
 #end
 }
